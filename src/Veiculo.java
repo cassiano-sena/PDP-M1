@@ -2,11 +2,13 @@ abstract class Veiculo {
     private String marca;
     private String modelo;
     private int ano;
+    private float manutencao;
 
-    public Veiculo(String marca, String modelo, int ano) {
+    public Veiculo(String marca, String modelo, int ano, float manutencao) {
         this.marca = marca;
         this.modelo = modelo;
         this.ano = ano;
+        this.manutencao = manutencao;
     }
 
     public String getMarca() {
@@ -33,17 +35,25 @@ abstract class Veiculo {
         this.ano = ano;
     }
 
+    public float getManutencao() {
+        return manutencao;
+    }
+
+    public void setManutencao(float manutencao) {
+        this.manutencao = manutencao;
+    }
+
     public abstract void exibirDetalhes();
     public double calcularCustoManutencao() {
-        return 500.0;
+        return 500.0 + getManutencao();
     }
 }
 
 class Carro extends Veiculo {
     private int quantidadePortas;
 
-    public Carro(String marca, String modelo, int ano, int quantidadePortas) {
-        super(marca, modelo, ano);
+    public Carro(String marca, String modelo, int ano, float manutencao,int quantidadePortas) {
+        super(marca, modelo, ano, manutencao);
         this.quantidadePortas = quantidadePortas;
     }
 
@@ -61,15 +71,15 @@ class Carro extends Veiculo {
     }
     @Override
     public double calcularCustoManutencao() {
-        return 700.0;
+        return 700.0 + getManutencao();
     }
 }
 
 class Moto extends Veiculo {
     private boolean temPartidaEletrica;
 
-    public Moto(String marca, String modelo, int ano, boolean temPartidaEletrica) {
-        super(marca, modelo, ano);
+    public Moto(String marca, String modelo, int ano, float manutencao, boolean temPartidaEletrica) {
+        super(marca, modelo, ano, manutencao);
         this.temPartidaEletrica = temPartidaEletrica;
     }
 
@@ -87,15 +97,15 @@ class Moto extends Veiculo {
     }
     @Override
     public double calcularCustoManutencao() {
-        return 300.0;
+        return 300.0 + getManutencao();
     }
 }
 
 class Caminhao extends Veiculo {
     private int capacidadeCarga;
 
-    public Caminhao(String marca, String modelo, int ano, int capacidadeCarga) {
-        super(marca, modelo, ano);
+    public Caminhao(String marca, String modelo, int ano, float manutencao, int capacidadeCarga) {
+        super(marca, modelo, ano, manutencao);
         this.capacidadeCarga = capacidadeCarga;
     }
 
@@ -113,6 +123,6 @@ class Caminhao extends Veiculo {
     }
     @Override
     public double calcularCustoManutencao() {
-        return 2000.0;    }
+        return 2000.0 + getManutencao();    }
 }
 
