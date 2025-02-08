@@ -34,6 +34,9 @@ abstract class Veiculo {
     }
 
     public abstract void exibirDetalhes();
+    public double calcularCustoManutencao() {
+        return 500.0;
+    }
 }
 
 class Carro extends Veiculo {
@@ -54,7 +57,11 @@ class Carro extends Veiculo {
 
     @Override
     public void exibirDetalhes() {
-        System.out.println("Carro: " + getMarca() + " " + getModelo() + ", Ano: " + getAno() + ", Portas: " + quantidadePortas);
+        System.out.println("Carro: " + getMarca() + " " + getModelo() + ", Ano: " + getAno() + ", Portas: " + quantidadePortas + ", Manutenção: R$ " + calcularCustoManutencao());
+    }
+    @Override
+    public double calcularCustoManutencao() {
+        return 700.0;
     }
 }
 
@@ -76,7 +83,11 @@ class Moto extends Veiculo {
 
     @Override
     public void exibirDetalhes() {
-        System.out.println("Moto: " + getMarca() + " " + getModelo() + ", Ano: " + getAno() + ", Partida Elétrica: " + (temPartidaEletrica ? "Sim" : "Não"));
+        System.out.println("Moto: " + getMarca() + " " + getModelo() + ", Ano: " + getAno() + ", Partida Elétrica: " + (temPartidaEletrica ? "Sim" : "Não") + ", Manutenção: R$ " + calcularCustoManutencao());
+    }
+    @Override
+    public double calcularCustoManutencao() {
+        return 300.0;
     }
 }
 
@@ -98,7 +109,10 @@ class Caminhao extends Veiculo {
 
     @Override
     public void exibirDetalhes() {
-        System.out.println("Caminhão: " + getMarca() + " " + getModelo() + ", Ano: " + getAno() + ", Capacidade de Carga: " + capacidadeCarga + "kg");
+        System.out.println("Caminhão: " + getMarca() + " " + getModelo() + ", Ano: " + getAno() + ", Capacidade de Carga:0 " + capacidadeCarga + "kg, Manutenção: R$ " + calcularCustoManutencao());
     }
+    @Override
+    public double calcularCustoManutencao() {
+        return 2000.0;    }
 }
 
